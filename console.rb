@@ -19,5 +19,7 @@ property2 = Property.new({
 property1.save()
 property2.save()
 
+properties = Property.all()
+
 binding.pry
 nil

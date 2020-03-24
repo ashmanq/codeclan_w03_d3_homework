@@ -41,4 +41,18 @@ class Property
       db.close()
   end
 
+
+  def Property.all()
+    db = PG.connect({dbname: 'properties', host: 'localhost'})
+
+    sql = "SELECT * from properties"
+
+    db.prepare("all", sql)
+
+    orders = db.exec_prepared("all")
+    db.close()
+
+    return orders.map {|order| Property.new(order)}
+  end
+
 end
