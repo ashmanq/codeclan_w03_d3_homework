@@ -16,6 +16,8 @@ property2 = Property.new({
               'no_of_bedrooms'=> 2000
               })
 
+Property.delete_all()
+
 property1.save()
 property2.save()
 
