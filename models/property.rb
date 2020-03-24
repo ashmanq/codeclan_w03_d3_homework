@@ -100,4 +100,21 @@ class Property
     db.close
   end
 
+  def Property.find_by_id(id)
+    db = PG.connect({dbname: 'properties', host: 'localhost'})
+
+    sql = "SELECT * FROM properties WHERE id = $1"
+
+    values = [id.to_s]
+
+    db.prepare("find_by_id", sql)
+
+    result = db.exec_prepared("find_by_id", values)
+
+    db.close
+
+    return result.map {|property| Property.new(property)}
+
+  end
+
 end
