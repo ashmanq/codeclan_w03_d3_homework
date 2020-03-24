@@ -16,18 +16,20 @@ property2 = Property.new({
               'no_of_bedrooms'=> 2000
               })
 
-# Property.delete_all()
+#Property.delete_all()
 #
-# property1.save()
+property1.save()
 # property1.value = 1
 # property1.update()
 #
-# property2.save()
+property2.save()
 # property2.delete()
 
 properties = Property.all()
 
 find_by_id_result = Property.find_by_id(15)
+
+find_by_address = Property.find_by_address('721–725 Fifth Avenue, New York')
 
 binding.pry
 nil

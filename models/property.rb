@@ -105,7 +105,7 @@ class Property
 
     sql = "SELECT * FROM properties WHERE id = $1"
 
-    values = [id.to_s]
+    values = [id]
 
     db.prepare("find_by_id", sql)
 
@@ -115,6 +115,27 @@ class Property
 
     return result.map {|property| Property.new(property)}
 
+  end
+
+  def Property.find_by_address(address)
+    db = PG.connect({dbname: 'properties', host: 'localhost'})
+
+    sql = "SELECT * FROM properties WHERE address = $1"
+
+    values = [address]
+
+    db.prepare("find_by_address", sql)
+    result = db.exec_prepared("find_by_address", values)
+
+    mapped_result = result.map {|property| Property.new(property)}
+
+    db.close
+
+    if mapped_result.size() == 0
+      return nil
+    else
+      return mapped_result[0]
+    end
   end
 
 end
