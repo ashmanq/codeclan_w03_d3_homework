@@ -65,4 +65,15 @@ class Property
     db.close()
   end
 
+  def delete()
+    db = PG.connect({dbname: 'properties', host: 'localhost'})
+
+    sql = "DELETE FROM properties WHERE id = $1"
+    values = [@id]
+
+    db.prepare("delete_one", sql)
+    db.exec_prepared("delete_one", values)
+    db.close()
+  end
+
 end

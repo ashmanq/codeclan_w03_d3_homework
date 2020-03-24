@@ -20,6 +20,7 @@ Property.delete_all()
 
 property1.save()
 property2.save()
+property2.delete()
 
 properties = Property.all()
 
