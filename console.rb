@@ -19,6 +19,9 @@ property2 = Property.new({
 Property.delete_all()
 
 property1.save()
+property1.value = 1
+property1.update()
+
 property2.save()
 property2.delete()
 
