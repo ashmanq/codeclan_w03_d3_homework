@@ -4,3 +4,8 @@ An app demonstrating full CRUD functionality between Ruby and an SQL database. T
 * The ability to find properties by id
 * The ability to find properties by address
 
+# Run App
+To run the app use the following command in terminal:
+```Ruby
+ruby console.rb
+```
